@@ -141,12 +141,35 @@
 
   /* Figure viewer in each project: the buttons switch between schematic, layout and LVS */
 
-  document.querySelectorAll('[data-viewer]').forEach((viewer) => {
+  const viewers = Array.from(document.querySelectorAll('[data-viewer]'));
+
+  // Fetch a viewer's hidden figures as soon as it is near the screen, so switching is instant.
+  const loadFigures = (viewer) => {
+    viewer.querySelectorAll('img[loading="lazy"]').forEach((img) => {
+      img.loading = 'eager';
+    });
+  };
+
+  if ('IntersectionObserver' in window) {
+    const figureObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          figureObserver.unobserve(entry.target);
+          loadFigures(entry.target);
+        }
+      });
+    }, { rootMargin: '300px 0px' });
+
+    viewers.forEach((viewer) => figureObserver.observe(viewer));
+  }
+
+  viewers.forEach((viewer) => {
     const slides = Array.from(viewer.querySelectorAll('.slide'));
     const tabs = Array.from(viewer.querySelectorAll('.viewer-tab'));
 
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => {
+        loadFigures(viewer);
         slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
         tabs.forEach((other, i) => {
           other.classList.toggle('is-active', i === index);
