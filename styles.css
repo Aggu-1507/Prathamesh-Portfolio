@@ -483,18 +483,6 @@ h4 {
   color: var(--sky);
 }
 
-.tag {
-  margin-left: 0.3rem;
-  padding: 0.12rem 0.4rem;
-  border-radius: 4px;
-  background: #d3e9fc;
-  color: var(--navy);
-  font: 500 0.66rem/1 var(--font-code);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  vertical-align: middle;
-}
-
 /* Projects */
 
 .project-list {
@@ -654,6 +642,12 @@ h4 {
 .contact {
   padding-bottom: 4.5rem;
   text-align: center;
+}
+
+.contact-name {
+  color: var(--navy);
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .contact-info {
