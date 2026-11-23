@@ -655,7 +655,8 @@ h4 {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.9rem;
-  margin-top: 1.4rem;
+  max-width: 52rem;
+  margin: 1.4rem auto 0;
 }
 
 .contact-item {
