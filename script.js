@@ -3,54 +3,50 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Typing line under the name */
+  /* Header shadow and reading-progress bar */
 
-  const typingEl = document.getElementById('typing-text');
-  const phrases = [
-    'ANALOG & MIXED-SIGNAL IC DESIGN',
-    'CUSTOM LAYOUT · DRC / LVS / PEX',
-    'M.S. STUDENT · TEXAS A&M UNIVERSITY'
-  ];
+  const header = document.querySelector('.site-header');
+  const progress = document.getElementById('progress');
+  let scrollQueued = false;
 
-  if (typingEl && !reduceMotion) {
-    let phrase = 0;
-    let position = phrases[0].length;
-    let deleting = true;
+  const updateScrollState = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    if (progress) {
+      progress.style.setProperty('--p', ratio.toFixed(4));
+    }
+    if (header) {
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    }
+    scrollQueued = false;
+  };
 
-    const tick = () => {
-      position += deleting ? -1 : 1;
-      typingEl.textContent = phrases[phrase].slice(0, position);
+  const queueScrollUpdate = () => {
+    if (!scrollQueued) {
+      scrollQueued = true;
+      window.requestAnimationFrame(updateScrollState);
+    }
+  };
 
-      let delay = deleting ? 28 : 55;
-      if (!deleting && position === phrases[phrase].length) {
-        deleting = true;
-        delay = 2200;
-      } else if (deleting && position === 0) {
-        deleting = false;
-        phrase = (phrase + 1) % phrases.length;
-        delay = 350;
-      }
-      window.setTimeout(tick, delay);
-    };
-
-    window.setTimeout(tick, 2200);
-  }
+  window.addEventListener('scroll', queueScrollUpdate, { passive: true });
+  window.addEventListener('resize', queueScrollUpdate);
+  updateScrollState();
 
   /* Mobile menu */
 
   const toggle = document.getElementById('menu-toggle');
-  const navList = document.getElementById('nav-list');
+  const nav = document.getElementById('site-nav');
 
-  if (toggle && navList) {
+  if (toggle && nav) {
     const setOpen = (open) => {
-      navList.classList.toggle('is-open', open);
+      nav.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', String(open));
     };
 
     toggle.addEventListener('click', () => {
       setOpen(toggle.getAttribute('aria-expanded') !== 'true');
     });
-    navList.addEventListener('click', (event) => {
+    nav.addEventListener('click', (event) => {
       if (event.target.closest('a')) {
         setOpen(false);
       }
@@ -64,7 +60,7 @@
 
   /* Highlight the nav link of the section in view */
 
-  const navLinks = Array.from(document.querySelectorAll('.nav-list a[href^="#"]'));
+  const navLinks = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
   const linkById = new Map(navLinks.map((link) => [link.getAttribute('href').slice(1), link]));
 
   if ('IntersectionObserver' in window && navLinks.length > 0) {
@@ -73,16 +69,94 @@
         if (!entry.isIntersecting) {
           return;
         }
-        const id = entry.target.id === 'digital-projects' ? 'projects' : entry.target.id;
-        const active = linkById.get(id);
+        const active = linkById.get(entry.target.id) || null;
         navLinks.forEach((link) => link.classList.toggle('is-active', link === active));
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
 
-    document.querySelectorAll('main section[id]').forEach((section) => sectionObserver.observe(section));
+    document.querySelectorAll('main section').forEach((section) => sectionObserver.observe(section));
   }
 
-  /* Figure viewer: without it, the figure links simply open the image */
+  /* Scroll reveal */
+
+  const revealEls = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+    revealEls.forEach((el) => revealObserver.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  }
+
+  /* Count the result figures up once they scroll into view */
+
+  const counters = Array.from(document.querySelectorAll('[data-count]'));
+
+  const runCounter = (el) => {
+    const finalText = el.dataset.count;
+    const target = Number.parseFloat(finalText);
+    const decimals = (finalText.split('.')[1] || '').length;
+    if (!Number.isFinite(target)) {
+      return;
+    }
+
+    const duration = 1400;
+    const start = window.performance.now();
+
+    const frame = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      if (t < 1) {
+        el.textContent = (target * eased).toFixed(decimals);
+        window.requestAnimationFrame(frame);
+      } else {
+        el.textContent = finalText;
+      }
+    };
+
+    el.textContent = (0).toFixed(decimals);
+    window.requestAnimationFrame(frame);
+  };
+
+  if (counters.length > 0 && 'IntersectionObserver' in window && !reduceMotion) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          counterObserver.unobserve(entry.target);
+          runCounter(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    counters.forEach((el) => counterObserver.observe(el));
+  }
+
+  /* Figure viewer in each project: the buttons switch between schematic, layout and LVS */
+
+  document.querySelectorAll('[data-viewer]').forEach((viewer) => {
+    const slides = Array.from(viewer.querySelectorAll('.slide'));
+    const tabs = Array.from(viewer.querySelectorAll('.viewer-tab'));
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+        tabs.forEach((other, i) => {
+          other.classList.toggle('is-active', i === index);
+          other.setAttribute('aria-pressed', String(i === index));
+        });
+      });
+    });
+  });
+
+  /* Enlarged figure: without it, the figure links simply open the image */
 
   const dialog = document.getElementById('lightbox');
   const bigImage = document.getElementById('lightbox-img');
