@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prathamesh | Portfolio</title>
+  <meta name="description" content="Portfolio of Prathamesh Venkatesh Narayan, M.S. student in Microelectronics and Semiconductors at Texas A&amp;M University: analog and digital IC design projects from schematic to verified layout.">
+  <meta name="theme-color" content="#500000">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Prathamesh | Portfolio">
+  <meta property="og:description" content="Analog and digital IC design projects: op-amps, current mirrors, differential amplifiers and a pipelined adder, from schematic to verified layout.">
+  <meta property="og:url" content="https://aggu-1507.github.io/Prathamesh-Portfolio/">
+  <meta property="og:image" content="https://aggu-1507.github.io/Prathamesh-Portfolio/opamp-layout.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23500000'/%3E%3Cpath d='M14 46V18h12a9 9 0 0 1 0 18H14M36 46V18l14 28V18' fill='none' stroke='%23ffffff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=Poppins:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-nav">
+    <nav class="nav-inner" aria-label="Primary">
+      <a class="logo" href="#home">Portfolio</a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-list" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-list" id="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="hero-container">
+        <div class="hero-left">
+          <h1>Hey! I'm <span class="name">Prathamesh</span></h1>
+          <p class="typing">
+            <span class="visually-hidden">Analog and mixed-signal IC design. Custom layout with DRC, LVS and PEX. M.S. Microelectronics and Semiconductors at Texas A&amp;M.</span>
+            <span id="typing-text" aria-hidden="true">ANALOG &amp; MIXED-SIGNAL IC DESIGN</span><span class="caret" aria-hidden="true"></span>
+          </p>
+          <div class="hero-description">
+            <p>I am pursuing my Master of Science in <strong>Microelectronics &amp; Semiconductors at Texas A&amp;M University</strong>, along with a graduate certificate in Analog &amp; Mixed-Signal. My projects take circuits from schematic to verified layout: a two-stage Miller op-amp with ESD protection, a cascode-loaded differential amplifier, a low-voltage cascode current mirror and an 8-bit pipelined adder.</p>
+            <h2 class="mini-title">What I work on</h2>
+            <ul>
+              <li>Analog and mixed-signal circuit design</li>
+              <li>Custom layout with DRC, LVS and PEX verification</li>
+              <li>Digital standard-cell and datapath design</li>
+            </ul>
+          </div>
+          <div class="hero-actions">
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn btn-outline" href="https://github.com/Aggu-1507" rel="me noopener">GitHub</a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <figure class="hero-figure">
+            <a class="zoom" href="opamp-layout.png" data-caption="Two-stage Miller op-amp layout with I/O pads and ESD protection">
+              <img src="opamp-layout.png" width="1364" height="1091" alt="Layout of a two-stage Miller op-amp with six I/O pads and ESD devices">
+            </a>
+            <figcaption>Two-stage Miller op-amp layout with I/O pads and ESD protection</figcaption>
+          </figure>
+          <div class="hero-socials">
+            <a href="https://github.com/Aggu-1507" rel="me noopener" aria-label="GitHub profile" title="GitHub">
+              <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2.1c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="education">
+      <h2 class="section-title">Education</h2>
+      <div class="card edu-card">
+        <div class="edu-head">
+          <span class="edu-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3Zm-7 9.6V16c0 1.9 3.13 3.5 7 3.5s7-1.6 7-3.5v-3.4l-7 3.82-7-3.82Z"/></svg>
+          </span>
+          <div>
+            <h3>Texas A&amp;M University</h3>
+            <p class="meta">College Station, Texas</p>
+          </div>
+        </div>
+        <div class="edu-body">
+          <div class="edu-programs">
+            <h4>Master of Science, Microelectronics &amp; Semiconductors</h4>
+            <p>Department of Electrical &amp; Computer Engineering, College of Engineering</p>
+            <h4>Graduate Certificate, Analog &amp; Mixed-Signal</h4>
+            <p>Department of Electrical &amp; Computer Engineering, College of Engineering</p>
+          </div>
+          <div class="course-grid">
+            <div>
+              <h4>Fall 2026</h4>
+              <ul>
+                <li>ECEN 620: Network Theory</li>
+                <li>ECEN 704: VLSI Circuit Design</li>
+                <li>ECEN 714: Digital Integrated Circuit Design</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Spring 2027 <span class="tag">registered</span></h4>
+              <ul>
+                <li>ECEN 607: Advanced Analog Circuit Techniques</li>
+                <li>ECEN 665: Integrated CMOS RF Circuits</li>
+                <li>ECEN 681: Seminar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <h2 class="section-title">Analog IC Design Projects, Texas A&amp;M University</h2>
+      <div class="project-list">
+
+        <article class="card project-card">
+          <div class="project-text">
+            <h3>Two Stage Miller Operational Amplifier with ESD Protection</h3>
+            <p class="meta">Fall 2026</p>
+            <ul class="metrics" aria-label="Key results">
+              <li><strong>56.24 dB</strong> DC open-loop gain</li>
+              <li><strong>61.54 dB</strong> CMRR</li>
+              <li><strong>3.1 MHz</strong> GBW</li>
+              <li><strong>45.76°</strong> phase margin</li>
+            </ul>
+            <ul class="bullets">
+              <li>Laid out an 8-transistor, 2-stage Miller op-amp (4 pF MOM capacitor) using a multi-finger floorplan (500 nm finger width, 18×6 grid including dummies) for device matching, dual guard rings (N-well + substrate), and aligned via stacks to prevent latch-up.</li>
+              <li>Verified pre and post-layout performance via PEX simulations, achieving 56.24 dB DC open-loop gain, 61.54 dB CMRR, 3.1 MHz GBW, and 45.76° phase margin.</li>
+              <li>Integrated 6 I/O pads (114 μm × 114 μm) with multi-layer via stacks and dual-diode / 3-diode string ESD protection (1.8 V hold-off, HBM/CDM), resolving 100% of DRC violations (antenna, latch-up, ESD) and passing LVS across base, pad integrated, and ESD-complete checkpoints.</li>
+            </ul>
+          </div>
+          <div class="project-figures">
+            <figure class="fig-wide">
+              <a class="zoom" href="opamp-schematic.png" data-caption="Two-stage Miller op-amp: schematic with ESD protection">
+                <img src="opamp-schematic.png" width="2170" height="1140" loading="lazy" alt="Schematic of the two-stage Miller op-amp with ESD diode networks on the input, bias and output pins">
+              </a>
+              <figcaption>Schematic with ESD protection</figcaption>
+            </figure>
+            <figure>
+              <a class="zoom" href="opamp-layout.png" data-caption="Two-stage Miller op-amp: layout with I/O pads and ESD">
+                <img src="opamp-layout.png" width="1364" height="1091" loading="lazy" alt="Layout of the two-stage Miller op-amp with six I/O pads and ESD devices">
+              </a>
+              <figcaption>Layout with I/O pads and ESD</figcaption>
+            </figure>
+            <figure class="fig-light">
+              <a class="zoom" href="opamp-lvs.png" data-caption="Two-stage Miller op-amp: Calibre LVS result">
+                <img src="opamp-lvs.png" width="874" height="349" loading="lazy" alt="Calibre LVS report showing the overall comparison result CORRECT for the cell 2StageOpAmp">
+              </a>
+              <figcaption>Calibre LVS: CORRECT</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-text">
+            <h3>Differential Amplifier with Cascode Current Mirror as Active Load and Tail Current Load</h3>
+            <p class="meta">Fall 2026</p>
+            <ul class="metrics" aria-label="Key results">
+              <li><strong>88.82 dB</strong> CMRR</li>
+              <li><strong>9.58 MHz</strong> GBW</li>
+              <li><strong>9.92 V/µs</strong> slew rate</li>
+              <li><strong>30.95 dB</strong> post-layout gain</li>
+            </ul>
+            <ul class="bullets">
+              <li>Designed a 10-transistor differential amplifier with an NMOS input pair, PMOS cascode current mirror load, and NMOS cascode current mirror tail source (±0.9 V supply, 10 pF load, 100 µA bias).</li>
+              <li>Exceeded all specifications in post-layout simulation: 88.82 dB CMRR, 9.58 MHz GBW and 9.92 V/µs slew rate with only 0.016 dB differential gain loss (30.97 → 30.95 dB) from pre- to post-layout.</li>
+            </ul>
+          </div>
+          <div class="project-figures figures-portrait">
+            <figure>
+              <a class="zoom" href="diffamp-schematic.jpg" data-caption="Differential amplifier with cascode current mirrors: schematic">
+                <img src="diffamp-schematic.jpg" width="575" height="730" loading="lazy" alt="Schematic of the differential amplifier with a PMOS cascode current mirror load and an NMOS cascode tail source">
+              </a>
+              <figcaption>Schematic</figcaption>
+            </figure>
+            <figure>
+              <a class="zoom" href="diffamp-layout.jpg" data-caption="Differential amplifier with cascode current mirrors: layout">
+                <img src="diffamp-layout.jpg" width="403" height="682" loading="lazy" alt="Layout of the differential amplifier, with ringed PMOS and NMOS device groups joined by metal routing">
+              </a>
+              <figcaption>Layout</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-text">
+            <h3>Low Voltage Cascode Current Mirror Design</h3>
+            <p class="meta">Fall 2026</p>
+            <ul class="metrics" aria-label="Key results">
+              <li><strong>119.332 µA</strong> output (0.56% error)</li>
+              <li><strong>1.248 MΩ</strong> output resistance</li>
+              <li><strong>&lt; 500 mV</strong> compliance voltage</li>
+            </ul>
+            <ul class="bullets">
+              <li>Designed and optimized a low-voltage cascode current mirror (60 µA input, 45 µA bias, 120 µA target output), achieving 119.332 µA post-layout output current (0.56% error) and 1.248 MΩ output resistance through transistor sizing.</li>
+              <li>Executed pre and post-layout DC/AC simulations, verifying sub 500 mV compliance voltages and characterizing the dominant pole-frequency shift from 14.34 MHz to 9.38 MHz.</li>
+            </ul>
+          </div>
+          <div class="project-figures">
+            <figure>
+              <a class="zoom" href="lvcm-schematic.jpg" data-caption="Low-voltage cascode current mirror: schematic">
+                <img src="lvcm-schematic.jpg" width="910" height="727" loading="lazy" alt="Schematic of the low-voltage cascode current mirror with IBIAS, I_IN and I_OUT pins">
+              </a>
+              <figcaption>Schematic</figcaption>
+            </figure>
+            <figure>
+              <a class="zoom" href="lvcm-layout.jpg" data-caption="Low-voltage cascode current mirror: layout">
+                <img src="lvcm-layout.jpg" width="680" height="677" loading="lazy" alt="Layout of the low-voltage cascode current mirror inside a guard ring, with I_IN, I_OUT, I_BIAS and VSS labels">
+              </a>
+              <figcaption>Layout</figcaption>
+            </figure>
+            <figure class="fig-wide fig-light">
+              <a class="zoom" href="lvcm-lvs.jpg" data-caption="Low-voltage cascode current mirror: LVS result">
+                <img src="lvcm-lvs.jpg" width="857" height="227" loading="lazy" alt="LVS report banner showing the result CORRECT">
+              </a>
+              <figcaption>LVS: CORRECT</figcaption>
+            </figure>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="digital-projects" class="projects">
+      <h2 class="section-title">Digital IC Design Projects, Texas A&amp;M University</h2>
+      <div class="project-list">
+
+        <article class="card project-card">
+          <div class="project-text">
+            <h3>Design of 8-bit Pipelined Adder with Buffered H-Clock Tree</h3>
+            <p class="meta">Fall 2026</p>
+            <ul class="metrics" aria-label="Key results">
+              <li><strong>33%</strong> lower circuit delay</li>
+              <li><strong>DRC / LVS</strong> clean</li>
+            </ul>
+            <ul class="bullets">
+              <li>Designed and verified (DRC/LVS clean) transistor-level schematics and layouts for standard cells (NAND, XOR, NOT, flip-flops) and an 8-bit pipelined adder integrated with a buffered H-clock tree.</li>
+              <li>Optimized critical-path transistor sizing using the logical effort method, reducing overall circuit delay by 33%.</li>
+            </ul>
+          </div>
+          <div class="project-figures figures-portrait">
+            <figure>
+              <a class="zoom" href="adder-schematic.jpg" data-caption="4-bit adder block: transistor-level schematic, overview">
+                <img src="adder-schematic.jpg" width="410" height="735" loading="lazy" alt="Overview of the transistor-level schematic of a 4-bit adder block">
+              </a>
+              <figcaption>4-bit adder block: overview</figcaption>
+            </figure>
+            <figure class="fig-cover">
+              <a class="zoom" href="adder-detail.jpg" data-caption="4-bit adder block: transistor-level schematic, detail">
+                <img src="adder-detail.jpg" width="1470" height="766" loading="lazy" alt="Close-up of the transistor-level schematic of the 4-bit adder block">
+              </a>
+              <figcaption>4-bit adder block: detail</figcaption>
+            </figure>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="card skill-card">
+          <h3>Analog IC Design</h3>
+          <ul>
+            <li>Two-stage Miller op-amps</li>
+            <li>Differential amplifiers</li>
+            <li>Cascode and low-voltage cascode current mirrors</li>
+            <li>Pre- and post-layout DC / AC simulation</li>
+            <li>Dual-diode and diode-string ESD protection</li>
+          </ul>
+        </div>
+        <div class="card skill-card">
+          <h3>Custom Layout &amp; Verification</h3>
+          <ul>
+            <li>Multi-finger floorplanning and device matching</li>
+            <li>Dummy devices and dual guard rings</li>
+            <li>I/O pad and via-stack integration</li>
+            <li>DRC, LVS and PEX</li>
+            <li>Antenna and latch-up fixes</li>
+          </ul>
+        </div>
+        <div class="card skill-card">
+          <h3>Digital IC Design</h3>
+          <ul>
+            <li>Standard cells: NAND, XOR, NOT, flip-flops</li>
+            <li>Pipelined adder design</li>
+            <li>Buffered H-clock tree</li>
+            <li>Logical-effort transistor sizing</li>
+          </ul>
+        </div>
+        <div class="card skill-card">
+          <h3>EDA Tools</h3>
+          <ul>
+            <li>Cadence Virtuoso Schematic Editor</li>
+            <li>Cadence Virtuoso Layout Suite XL</li>
+            <li>Calibre LVS</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 class="section-title">Contact</h2>
+      <p>Texas A&amp;M University, College Station, Texas.</p>
+      <div class="contact-info">
+        <a class="contact-item" href="https://github.com/Aggu-1507" rel="me noopener">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2.1c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+          github.com/Aggu-1507
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; Prathamesh Venkatesh Narayan</p>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Enlarged figure">
+    <figure>
+      <img id="lightbox-img" alt="">
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+    <form method="dialog">
+      <button class="lightbox-close" aria-label="Close">&times;</button>
+    </form>
+  </dialog>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
