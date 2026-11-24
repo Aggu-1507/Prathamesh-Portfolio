@@ -1,6 +1,6 @@
 # Prathamesh-Portfolio
 
-Source for my portfolio site: https://aggu-1507.github.io/Prathamesh-Portfolio/
+Source for my portfolio site: https://aggu-1507.github.io/
 
 A plain static site with no build step.
 
