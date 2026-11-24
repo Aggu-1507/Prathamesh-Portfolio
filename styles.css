@@ -454,7 +454,7 @@ button {
   animation: appear 0.4s ease 3s forwards;
 }
 
-.js .draw {
+.js .chip .draw {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   animation: draw 1.4s ease forwards;
@@ -465,8 +465,9 @@ button {
   transform: scaleY(0);
   transform-box: fill-box;
   transform-origin: 50% 100%;
-  animation: grow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  animation-delay: calc(0.9s + var(--i) * 55ms);
+  animation:
+    grow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) calc(0.9s + var(--i) * 55ms) forwards,
+    emphasis 4.8s ease-in-out calc(3.4s + var(--i) * 130ms) infinite;
 }
 
 @keyframes draw {
@@ -484,6 +485,186 @@ button {
 @keyframes appear {
   to {
     opacity: 1;
+  }
+}
+
+@keyframes emphasis {
+  0%,
+  45%,
+  100% {
+    opacity: 1;
+  }
+  22% {
+    opacity: 0.3;
+  }
+}
+
+/* Line-art illustrations: they draw themselves when scrolled into view */
+
+.art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.art .k,
+.art .a {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.art .k {
+  stroke: var(--ink);
+}
+
+.art .a {
+  stroke: var(--accent);
+}
+
+.art .thin {
+  stroke-width: 1.5;
+}
+
+.art .thick {
+  stroke-width: 4;
+}
+
+.art .dash {
+  stroke-dasharray: 2 6;
+}
+
+.art .soft {
+  fill: rgba(31, 120, 209, 0.12);
+}
+
+.art .tri {
+  fill: rgba(255, 255, 255, 0.55);
+}
+
+.art .mark {
+  fill: #fff;
+}
+
+.art .fk {
+  fill: var(--ink);
+}
+
+.art .fa {
+  fill: var(--accent);
+}
+
+.art .contacts rect {
+  fill: #fff;
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+
+.art .dot {
+  fill: #fff;
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.art-label {
+  fill: var(--muted);
+  font: 600 8px/1 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.art .flow {
+  stroke-dasharray: 5 7;
+  animation: flow 1.1s linear infinite;
+}
+
+.art .wave-move {
+  animation: slide 3s linear infinite;
+}
+
+.art .runner {
+  opacity: 0;
+}
+
+html:not(.js) .art .runner {
+  opacity: 1;
+}
+
+.js .art .draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.js .art .fade {
+  opacity: 0;
+}
+
+.js .art .pop {
+  opacity: 0;
+  transform: scale(0.3);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.js .art .grow {
+  transform: scaleY(0);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.js .art.is-in .draw {
+  animation: draw 1.1s ease var(--d, 0s) forwards;
+}
+
+.js .art.is-in .fade {
+  animation: appear 0.6s ease var(--d, 0s) forwards;
+}
+
+.js .art.is-in .pop {
+  animation: pop-in 0.45s cubic-bezier(0.2, 1.5, 0.4, 1) var(--d, 0s) forwards;
+}
+
+.js .art.is-in .grow {
+  animation: grow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s) forwards;
+}
+
+.js .art.is-in .grow.grp-a {
+  animation:
+    grow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s) forwards,
+    emphasis 4s ease-in-out 2.4s infinite;
+}
+
+.js .art.is-in .grow.grp-b {
+  animation:
+    grow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s) forwards,
+    emphasis 4s ease-in-out 4.4s infinite;
+}
+
+.js .art.is-in .runner {
+  animation: appear 0.4s ease 1.6s forwards;
+}
+
+.js .art:not(.is-live) * {
+  animation-play-state: paused;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(120px);
+  }
+}
+
+@keyframes pop-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -583,9 +764,21 @@ button {
 
 /* Statement */
 
+.statement-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(14rem, 1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  margin-top: 1.5rem;
+}
+
+.statement-art {
+  max-width: 30rem;
+  justify-self: end;
+}
+
 .statement-text {
   max-width: 19em;
-  margin-top: 1.5rem;
   font-size: clamp(1.9rem, 4.6vw, 4.6rem);
   font-weight: 500;
   line-height: 1.06;
@@ -628,6 +821,11 @@ button {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.glyph {
+  width: 5.5rem;
+  margin-top: 0.9rem;
 }
 
 .project h3 {
@@ -830,6 +1028,36 @@ button {
   color: var(--night-muted);
 }
 
+.results-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 30rem);
+  align-items: end;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  margin-bottom: clamp(2rem, 5vw, 4.5rem);
+}
+
+.results-head .section-head {
+  margin-bottom: 0;
+}
+
+.scope {
+  border: 1px solid var(--night-line);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.results .art .k {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+.results .art .in-wave {
+  stroke: rgba(255, 255, 255, 0.6);
+}
+
+.results .art .a {
+  stroke: var(--glow);
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -884,6 +1112,14 @@ button {
 .rule {
   padding-top: 1.25rem;
   border-top: 2px solid var(--ink);
+}
+
+.rule-art {
+  margin-bottom: 1.4rem;
+  padding: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .rule-num {
@@ -1048,8 +1284,20 @@ button {
   font-size: clamp(3.4rem, 11.5vw, 11rem);
 }
 
-.contact-name {
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 1fr);
+  align-items: end;
+  gap: clamp(1.5rem, 4vw, 4rem);
   margin-top: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+.amp-art {
+  max-width: 34rem;
+  justify-self: end;
+}
+
+.contact-name {
   font-size: clamp(1.3rem, 2vw, 1.7rem);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -1181,10 +1429,13 @@ button {
 
 @media (max-width: 1000px) {
   .hero-grid,
+  .statement-grid,
   .project,
+  .results-head,
   .rules,
   .edu-grid,
-  .about-grid {
+  .about-grid,
+  .contact-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -1192,11 +1443,25 @@ button {
     max-width: 30rem;
   }
 
+  .statement-art,
+  .amp-art {
+    max-width: 26rem;
+    justify-self: start;
+  }
+
   .project-meta {
-    grid-auto-flow: column;
-    justify-content: start;
-    align-items: baseline;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
     gap: 1rem;
+  }
+
+  .glyph {
+    width: 3.75rem;
+    margin-top: 0;
+  }
+
+  .rule-art {
+    max-width: 30rem;
   }
 
   .viewer {
@@ -1287,11 +1552,23 @@ button {
     transform: none;
   }
 
-  .js .draw {
+  .js .chip .draw,
+  .js .art .draw {
     stroke-dashoffset: 0;
   }
 
-  .js .chip-fingers rect {
+  .js .chip-fingers rect,
+  .js .art .grow {
     transform: none;
+  }
+
+  .js .art .fade,
+  .js .art .pop {
+    opacity: 1;
+    transform: none;
+  }
+
+  .art .runner {
+    display: none;
   }
 }

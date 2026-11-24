@@ -96,6 +96,43 @@
     revealEls.forEach((el) => el.classList.add('is-in'));
   }
 
+  /* Line-art illustrations: draw when they scroll into view, pause while off screen */
+
+  const arts = Array.from(document.querySelectorAll('svg.art'));
+
+  const setLive = (svg, live) => {
+    svg.classList.toggle('is-live', live);
+    if (typeof svg.pauseAnimations === 'function') {
+      if (live) {
+        svg.unpauseAnimations();
+      } else {
+        svg.pauseAnimations();
+      }
+    }
+  };
+
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    arts.forEach((svg) => setLive(svg, false));
+
+    const artObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+        }
+        setLive(entry.target, entry.isIntersecting);
+      });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.2 });
+
+    arts.forEach((svg) => artObserver.observe(svg));
+  } else {
+    arts.forEach((svg) => {
+      svg.classList.add('is-in', 'is-live');
+      if (reduceMotion && typeof svg.pauseAnimations === 'function') {
+        svg.pauseAnimations();
+      }
+    });
+  }
+
   /* Count the result figures up once they scroll into view */
 
   const counters = Array.from(document.querySelectorAll('[data-count]'));
